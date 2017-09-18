@@ -110,7 +110,7 @@ window.TimerangeSelector = function(container) {
 
         if (e.target === fromHandle[0]) {
           // Left handle
-          minX = handleWidth + 1;
+          minX = - handleWidth - 2;
           maxX = toHandle.position().left - handleWidth;
 
           if (posX < minX) {
