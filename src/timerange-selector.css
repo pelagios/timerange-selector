@@ -12,6 +12,10 @@
   position:absolute;
 }
 
+.trs-axislabel.zero {
+  display:none !important;
+}
+
 .trs-selection {
   position:absolute;
   top:-3px;
