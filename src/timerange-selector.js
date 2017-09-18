@@ -1,4 +1,4 @@
-window.Timegraph = function(container) {
+window.TimerangeSelector = function(container) {
 
   var  BAR_STROKE = '#3182bd',
 
@@ -9,7 +9,7 @@ window.Timegraph = function(container) {
        MAX_BUCKETS = 46;
 
       /** Canvas element **/
-  var element = Timegraph.Template(container.width(), container.height()).appendTo(container),
+  var element = TimerangeSelector.Template(container.width(), container.height()).appendTo(container),
 
       canvas = container.find('canvas'),
 
@@ -17,6 +17,19 @@ window.Timegraph = function(container) {
 
       /** Drawing context - initialize after appending canvas to DOM **/
       ctx,
+
+      /** Selected interval bounds indicator **/
+      selectionBounds = container.find('.th-selection'),
+
+      /** Interval handle elements **/
+      fromHandle = container.find('.th-handle.from'),
+      fromHandleLabel = fromHandle.find('.label'),
+
+      toHandle = container.find('.th-handle.to'),
+      toHandleLabel = toHandle.find('.label'),
+
+      /** It's safe to assume that both handles are identical **/
+      handleWidth,
 
       getVal = function(obj) {
         var keys = Object.keys(obj);

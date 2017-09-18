@@ -1,7 +1,8 @@
 <html>
   <head>
+    <link rel="stylesheet" href="src/timerange-selector.css" />
     <script src="vendor/jquery.min.js"></script>
-    <script src="src/timegraph.js"></script>
+    <script src="src/timerange-selector.js"></script>
     <script src="src/template.js"></script>
     <script>
       jQuery(document).ready(function() {
@@ -33,7 +34,7 @@
           { "1000" : 1  }
         ];
 
-        var t = new Timegraph(jQuery('.container'));
+        var t = new TimerangeSelector(jQuery('.container'));
         t.update(data);
       });
     </script>

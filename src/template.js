@@ -1,19 +1,19 @@
-window.Timegraph.Template = function(w, h) {
+window.TimerangeSelector.Template = function(w, h) {
   return jQuery(
-    '<div class="timehistogram-pane">' +
-      '<div class="timehistogram">' +
+    '<div class="trs-container">' +
+      '<div class="timerange-selector">' +
        '<canvas width="' + w + '" height="' + h + '"></canvas>' +
-       '<span class="th-axislabel from"></span>' +
-       '<span class="th-axislabel zero">1 AD</span>' +
-       '<span class="th-axislabel to"></span>' +
+       '<span class="trs-axislabel from"></span>' +
+       '<span class="trs-axislabel zero">1 AD</span>' +
+       '<span class="trs-axislabel to"></span>' +
 
-       '<div class="th-selection"></div>' +
+       '<div class="trs-selection"></div>' +
 
-       '<div class="th-handle from">' +
+       '<div class="trs-handle from">' +
          '<div class="label"></div>' +
        '</div>' +
 
-       '<div class="th-handle to">' +
+       '<div class="trs-handle to">' +
          '<div class="label"></div>' +
        '</div>' +
       '</div>' +
