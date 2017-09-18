@@ -9,7 +9,7 @@ window.Timegraph = function(container) {
        MAX_BUCKETS = 46;
 
       /** Canvas element **/
-  var element = Timegraph.Template(container.innerWidth(), container.innerHeight()).appendTo(container),
+  var element = Timegraph.Template(container.width(), container.height()).appendTo(container),
 
       canvas = container.find('canvas'),
 
