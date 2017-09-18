@@ -159,8 +159,8 @@ window.TimerangeSelector = function(container) {
         toHandleLabel.empty();
         toHandleLabel.hide();
 
-        if (selection) self.fireEvent('selectionChange', selection);
-        else self.fireEvent('selectionChange', { from: false, to: false });
+        // if (selection) self.fireEvent('selectionChange', selection);
+        // else self.fireEvent('selectionChange', { from: false, to: false });
       },
 
       onDragBounds = function(e) {
@@ -182,7 +182,7 @@ window.TimerangeSelector = function(container) {
         toHandle.css('left', offsetX + width + canvasOffset);
 
         // getSelectedRange returns a ref to the global var - don't hand this outside!
-        self.fireEvent('selectionChange', jQuery.extend({}, getSelectedRange()));
+        // self.fireEvent('selectionChange', jQuery.extend({}, getSelectedRange()));
       },
 
       onStopBounds = function(e) {
@@ -214,7 +214,24 @@ window.TimerangeSelector = function(container) {
       update = function(buckets) {
         if (buckets.length === 0) return;
 
-        var maxValue = Math.max.apply(Math, buckets.map(getVal)),
+        var toDate = function(str) {
+              var date = new Date(str);
+
+              // Cf. http://scholarslab.org/research-and-development/parsing-bc-dates-with-javascript/
+              if (str.indexOf('-') === 0) {
+                var year = (str.indexOf('-', 1) < 0) ?
+                  parseInt(str.substring(1)) : // -YYYY
+                  parseInt(str.substring(1, str.indexOf('-', 1))); // -YYYY-MM...
+
+                date.setFullYear(-year);
+              }
+
+              return date;
+            },
+
+            currentSelection = getSelectedRange(),
+            selectionNewFromX, selectionNewToX, // Updated selection bounds
+            maxValue = Math.max.apply(Math, buckets.map(getVal)),
             minYear = toDate(getKey(buckets[0])),
             maxYear = toDate(getKey(buckets[buckets.length - 1])),
             height = ctx.canvas.height - 1,
@@ -223,7 +240,22 @@ window.TimerangeSelector = function(container) {
             barSpacing = Math.round(drawingAreaWidth / buckets.length),
             barWidth = barSpacing - 3;
 
+        histogramRange = { from: minYear, to: maxYear };
+
+        // Relabel
+        histogramFromLabel.html(TimerangeSelector.Formatting.formatYear(minYear));
+        histogramToLabel.html(TimerangeSelector.Formatting.formatYear(maxYear));
+
+        if (minYear.getFullYear() < 0 && maxYear.getFullYear() > 0) {
+          histogramZeroLabel.show();
+          histogramZeroLabel[0].style.left = (yearToX(0) + canvasOffset - 35) + 'px';
+        } else {
+          histogramZeroLabel.hide();
+        }
+
+        // Redraw
         ctx.clearRect(0, 0, canvasWidth, ctx.canvas.height);
+
         buckets.forEach(function(obj) {
           var val = getVal(obj),
               barHeight = Math.round(Math.sqrt(val / maxValue) * height);
@@ -236,6 +268,16 @@ window.TimerangeSelector = function(container) {
           ctx.stroke();
           xOffset += barSpacing;
         });
+
+        // Reset labels & selection
+        // histogramRange.from = minYear;
+        // histogramRange.to = maxYear;
+
+        setSelection(currentSelection.from, currentSelection.to);
+
+        // We don't want to handle to many updates - introduce a wait
+        // ignoreUpdates = true;
+        // setTimeout(function() { ignoreUpdates = false; }, MIN_UPDATE_DELAY);
       };
 
   fromHandleLabel.hide();
