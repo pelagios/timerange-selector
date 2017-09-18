@@ -1,3 +1,9 @@
+@font-face {
+  font-family:"GripHandle";
+  src:url("griphandle.ttf");
+  font-weight:300;
+}
+
 .timerange-selector {
   position:relative;
 }
@@ -27,6 +33,7 @@
   width:6px;
   font-family:GripHandle;
   font-size:11px;
+  line-height:16px;
   color:rgba(0,0,0,0.4);
   background-color:#bcbcbc;
   border-color:rgba(0,0,0,0.2);
@@ -94,3 +101,7 @@
   right:-18px;
 }
 .trs-handle.to .label { left:-32px; }
+
+.trs-axislabel {
+  display:none;
+}

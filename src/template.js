@@ -6,13 +6,10 @@ window.TimerangeSelector.Template = function(w, h) {
        '<span class="trs-axislabel from"></span>' +
        '<span class="trs-axislabel zero">1 AD</span>' +
        '<span class="trs-axislabel to"></span>' +
-
        '<div class="trs-selection"></div>' +
-
        '<div class="trs-handle from">' +
          '<div class="label"></div>' +
        '</div>' +
-
        '<div class="trs-handle to">' +
          '<div class="label"></div>' +
        '</div>' +
