@@ -2,6 +2,8 @@
 
 The timerange selection widget from Peripleo. [See it in action](https://pelagios.github.io/timerange-selector/).
 
+![Example](example.png)
+
 ## Usage
 
 HTML
@@ -53,11 +55,6 @@ t.on('changed', function(evt) {
   console.log(evt);
 });
 ```
-
-Should look like this:
-
-![Example](example.png)
-
 
 ## TODO
 
