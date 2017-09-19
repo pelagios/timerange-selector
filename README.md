@@ -51,7 +51,8 @@ var t = new TimerangeSelector(document.getElementById('my-selector')));
 t.update(data);
 ```
 
-Should look like this
+Should look like this:
+
 ![Example](example.png)
 
 
