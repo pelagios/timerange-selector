@@ -37,7 +37,7 @@
           { "1000" : 1  }
         ];
 
-        var t = new TimerangeSelector(jQuery('.container'));
+        var t = new TimerangeSelector(document.getElementById('container'));
         t.update(data);
       });
     </script>
@@ -50,7 +50,7 @@
         text-align:center;
       }
 
-      .container {
+      #container {
         margin:0 auto;
         width:255px;
         height:50px;
@@ -61,6 +61,6 @@
     </style>
   </head>
   <body>
-    <div class="container"></div>
+    <div id="container"></div>
   </body>
 </html>

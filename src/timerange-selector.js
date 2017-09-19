@@ -1,4 +1,4 @@
-window.TimerangeSelector = function(container) {
+window.TimerangeSelector = function(c) {
 
   var  BAR_STROKE = '#3182bd',
 
@@ -8,8 +8,9 @@ window.TimerangeSelector = function(container) {
 
        MAX_BUCKETS = 46;
 
-      /** Canvas element **/
-  var element = TimerangeSelector.Template(container.width(), container.height()).appendTo(container),
+  var container = jQuery(c),
+
+      element = TimerangeSelector.Template(container.width(), container.height()).appendTo(container),
 
       canvas = container.find('canvas'),
 
