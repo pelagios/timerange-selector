@@ -67,11 +67,10 @@ At the moment: too much to list. Some major burning issues I can think of now ar
 - Find a good way to organize the codebase and build minified JS (and CSS). Perhaps using
   [Gulp](https://gulpjs.com/)? (In Peripleo, namespacing and module loading was handled
   via Require.js. Alternatives?)
-- Re-enable events
 - Should we remove jQuery dependency? The only major issue will be to re-implement touch-compatible
   drag behavior... remaining jQuery use should be easy to eliminate if desired
 - Fix various quirks in the UI (overlapping handle labels etc.)
-- Proper instantiation with a config object to control appearance etc.
+- Proper instantiation with a config object to control appearance, bar style etc.
 - Support dates, not just integer years
 - Implement properly working resampling in case the number of bins in the input data is larger
   than what can be displayed
