@@ -34,11 +34,14 @@
           { "1000" : 1  }
         ];
 
+        var log = document.getElementById('log');
+
         var t = new Pelagios.TimerangeSelector(document.getElementById('container'));
         t.update(data);
         t.on('changed', function(evt) {
-          console.log(evt);
+          log.innerHTML = JSON.stringify(evt);
         });
+
       });
     </script>
     <style>
@@ -58,9 +61,21 @@
         border-radius:2px;
         padding:6px;
       }
+
+      #log {
+        margin:20px auto 0 auto;
+        width:255;
+        background-color:#3F3F3F;
+        color:#DCDCDC;
+        font-family:monospace;
+        border-radius:5px;
+        padding:20px 6px;
+        text-align:center;
+      }
     </style>
   </head>
   <body>
     <div id="container"></div>
+    <div id="log">&nbsp;</div>
   </body>
 </html>
