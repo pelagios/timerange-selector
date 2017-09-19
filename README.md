@@ -15,27 +15,45 @@ HTML
 </html>
 ```
 
+JavaScript
 ```javascript
-// The histogram data: an array of key/values, where the key is the year (integer) the
+// Histogram data: an array of key/values, where the key is the year (integer) the
 // bin starts, and the value is the count in the bin
 var data = [
-  { "1900" : 1  },  
-  { "1910" : 2  },  
-  { "1920" : 3  },  
-  { "1930" : 7  },  
-  { "1940" : 4  },  
-  { "1950" : 1  },  
-  { "1960" : 3  },  
-  { "1970" : 2  },  
-  { "1980" : 8  },  
-  { "1990" : 6  },  
-  { "2000" : 5  },
-  { "2010" : 1  }
+  { "-200" : 1  },
+  { "-150" : 1  },
+  { "-100" : 2  },
+  {  "-50" : 2  },
+  {    "0" : 3  },
+  {   "50" : 3  },
+  {  "100" : 6  },
+  {  "150" : 8  },
+  {  "200" : 10 },
+  {  "250" : 8  },
+  {  "300" : 6  },
+  {  "350" : 6  },
+  {  "400" : 3  },
+  {  "450" : 3  },
+  {  "500" : 2  },
+  {  "550" : 2  },
+  {  "600" : 1  },
+  {  "650" : 1  },
+  {  "700" : 1  },
+  {  "750" : 1  },
+  {  "800" : 1  },
+  {  "850" : 1  },
+  {  "900" : 1  },
+  {  "950" : 1  },
+  { "1000" : 1  }
 ];
 
 var t = new TimerangeSelector(document.getElementById('my-selector')));
 t.update(data);
 ```
+
+Should look like this
+![Example](example.png)
+
 
 ## TODO
 
