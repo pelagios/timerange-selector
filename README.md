@@ -1,6 +1,6 @@
 # Peripleo Timerange Selector
 
-The timerange selection widget from Peripleo. [See it in action](https://pelagios.github.io/timerange-selector/).
+The timerange selection widget from Peripleo. [Try it](https://pelagios.github.io/timerange-selector/).
 
 ![Example](example.png)
 
