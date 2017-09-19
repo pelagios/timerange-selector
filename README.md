@@ -47,7 +47,7 @@ var data = [
   { "1000" : 1  }
 ];
 
-var t = new TimerangeSelector(document.getElementById('my-selector')));
+var t = new Pelagios.TimerangeSelector(document.getElementById('my-selector')));
 t.update(data);
 t.on('changed', function(evt) {
   // Logs the selection interval (in years) to the JS console
