@@ -1,7 +1,6 @@
 # Peripleo Timerange Selector
 
-The timerange selection widget from Peripleo. To see it in action, clone this repository and open
-the file `index.html` in your browser.
+The timerange selection widget from Peripleo. [See it in action](https://pelagios.github.io/timerange-selector/).
 
 ## Usage
 
