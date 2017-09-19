@@ -1,4 +1,6 @@
-window.TimerangeSelector.Draggable = {
+window.Pelagios = window.Pelagios || {};
+
+Pelagios.Draggable = {
 
   makeXDraggable: function(element, onDrag, onStop, opt_containment) {
 

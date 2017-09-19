@@ -1,4 +1,6 @@
-window.TimerangeSelector.Template = function(w, h) {
+window.Pelagios = window.Pelagios || {};
+
+Pelagios.Template = function(w, h) {
   return jQuery(
     '<div class="trs-container">' +
       '<div class="timerange-selector">' +

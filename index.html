@@ -3,10 +3,11 @@
     <link rel="stylesheet" href="src/timerange-selector.css" />
     <script src="vendor/jquery.min.js"></script>
     <script src="vendor/jquery-ui.min.js"></script>
-    <script src="src/timerange-selector.js"></script>
     <script src="src/template.js"></script>
     <script src="src/draggable.js"></script>
     <script src="src/formatting.js"></script>
+    <script src="src/hasEvents.js"></script>
+    <script src="src/timerange-selector.js"></script>
     <script>
       jQuery(document).ready(function() {
         var data = [
@@ -37,8 +38,11 @@
           { "1000" : 1  }
         ];
 
-        var t = new TimerangeSelector(document.getElementById('container'));
+        var t = new Pelagios.TimerangeSelector(document.getElementById('container'));
         t.update(data);
+        t.on('changed', function(evt) {
+          console.log(evt);
+        });
       });
     </script>
     <style>

@@ -1,4 +1,6 @@
-window.TimerangeSelector.Formatting = {
+window.Pelagios = window.Pelagios || {};
+
+Pelagios.Formatting = {
 
   formatYear : function(dateOrYear) {
     var year = (dateOrYear instanceof Date) ? dateOrYear.getFullYear() : parseInt(dateOrYear);

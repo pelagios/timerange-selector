@@ -1,4 +1,6 @@
-window.TimerangeSelector = function(c) {
+window.Pelagios = window.Pelagios || {};
+
+Pelagios.TimerangeSelector = function(c) {
 
   var  BAR_STROKE = '#3182bd',
 
@@ -8,9 +10,11 @@ window.TimerangeSelector = function(c) {
 
        MAX_BUCKETS = 46;
 
-  var container = jQuery(c),
+  var that = this,
 
-      element = TimerangeSelector.Template(container.width(), container.height()).appendTo(container),
+      container = jQuery(c),
+
+      element = Pelagios.Template(container.width(), container.height()).appendTo(container),
 
       canvas = container.find('canvas'),
 
@@ -124,7 +128,7 @@ window.TimerangeSelector = function(c) {
 
           // Update handle label
           fromHandleLabel.show();
-          fromHandleLabel.html(TimerangeSelector.Formatting.formatYear(xToYear(posX + handleWidth - canvasOffset)));
+          fromHandleLabel.html(Pelagios.Formatting.formatYear(xToYear(posX + handleWidth - canvasOffset)));
 
           // Update selection bounds
           selectionBounds.css('left', posX + handleWidth);
@@ -144,7 +148,7 @@ window.TimerangeSelector = function(c) {
 
           // Update handle label
           toHandleLabel.show();
-          toHandleLabel.html(TimerangeSelector.Formatting.formatYear(xToYear(posX - canvasOffset)));
+          toHandleLabel.html(Pelagios.Formatting.formatYear(xToYear(posX - canvasOffset)));
 
           // Update selection bounds
           selectionBounds.css('width', posX - minX);
@@ -160,8 +164,8 @@ window.TimerangeSelector = function(c) {
         toHandleLabel.empty();
         toHandleLabel.hide();
 
-        // if (selection) self.fireEvent('selectionChange', selection);
-        // else self.fireEvent('selectionChange', { from: false, to: false });
+        if (selection) that.fireEvent('changed', selection);
+        else that.fireEvent('changed', { from: false, to: false });
       },
 
       onDragBounds = function(e) {
@@ -174,16 +178,16 @@ window.TimerangeSelector = function(c) {
         // Clear cached range
         selectionRange = false;
 
-        fromHandleLabel.html(TimerangeSelector.Formatting.formatYear(fromYear));
+        fromHandleLabel.html(Pelagios.Formatting.formatYear(fromYear));
         fromHandleLabel.show();
         fromHandle.css('left', offsetX - handleWidth + canvasOffset);
 
-        toHandleLabel.html(TimerangeSelector.Formatting.formatYear(toYear));
+        toHandleLabel.html(Pelagios.Formatting.formatYear(toYear));
         toHandleLabel.show();
         toHandle.css('left', offsetX + width + canvasOffset);
 
         // getSelectedRange returns a ref to the global var - don't hand this outside!
-        // self.fireEvent('selectionChange', jQuery.extend({}, getSelectedRange()));
+        that.fireEvent('changed', jQuery.extend({}, getSelectedRange()));
       },
 
       onStopBounds = function(e) {
@@ -244,8 +248,8 @@ window.TimerangeSelector = function(c) {
         histogramRange = { from: minYear, to: maxYear };
 
         // Relabel
-        histogramFromLabel.html(TimerangeSelector.Formatting.formatYear(minYear));
-        histogramToLabel.html(TimerangeSelector.Formatting.formatYear(maxYear));
+        histogramFromLabel.html(Pelagios.Formatting.formatYear(minYear));
+        histogramToLabel.html(Pelagios.Formatting.formatYear(maxYear));
 
         if (minYear.getFullYear() < 0 && maxYear.getFullYear() > 0) {
           histogramZeroLabel.show();
@@ -289,10 +293,12 @@ window.TimerangeSelector = function(c) {
   canvasOffset = (canvas.outerWidth(true) - canvasWidth) / 2;
   handleWidth = fromHandle.outerWidth();
 
-  TimerangeSelector.Draggable.makeXDraggable(fromHandle, onDragHandle, onStopHandle);
-  TimerangeSelector.Draggable.makeXDraggable(toHandle, onDragHandle, onStopHandle);
-  TimerangeSelector.Draggable.makeXDraggable(selectionBounds, onDragBounds, onStopBounds, canvas);
+  Pelagios.Draggable.makeXDraggable(fromHandle, onDragHandle, onStopHandle);
+  Pelagios.Draggable.makeXDraggable(toHandle, onDragHandle, onStopHandle);
+  Pelagios.Draggable.makeXDraggable(selectionBounds, onDragBounds, onStopBounds, canvas);
 
   this.update = update;
 
+  Pelagios.HasEvents.apply(this);
 };
+Pelagios.TimerangeSelector.prototype = Object.create(Pelagios.HasEvents.prototype);

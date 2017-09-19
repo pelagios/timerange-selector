@@ -49,6 +49,10 @@ var data = [
 
 var t = new TimerangeSelector(document.getElementById('my-selector')));
 t.update(data);
+t.on('changed', function(evt) {
+  // Logs the selection interval (in years) to the JS console
+  console.log(evt);
+});
 ```
 
 Should look like this:
